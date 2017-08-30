@@ -1,0 +1,7 @@
+work*/
+out/
+*.zip
+prebuilt/system/lib/modules/wlan.ko
+prebuilt/system/lib/modules/pronto/pronto_wlan.ko
+prebuilt/Image
+prebuilt/dt.img
