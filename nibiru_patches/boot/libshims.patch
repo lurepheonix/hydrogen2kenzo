@@ -1,0 +1,13 @@
+diff -Naur boot.img-ramdisk1/init.target.rc boot.img-ramdisk0/init.target.rc
+--- boot.img-ramdisk1/init.target.rc	2017-08-29 14:31:36.000000000 +0300
++++ boot.img-ramdisk0/init.target.rc	2017-08-29 15:11:39.681680000 +0300
+@@ -35,6 +35,9 @@
+     symlink /data/tombstones /tombstones
+     mkdir /dsp 0771 media media
+ 
++on early-init
++    export LD_SHIM_LIBS "/system/vendor/lib64/lib-imsvt.so|libshims_ims.so:/system/bin/mm-qcamera-daemon|libshims_camera.so"
++
+ on init
+     mkdir /cust 0771 system system
+ 
