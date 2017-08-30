@@ -168,10 +168,11 @@ cd $WORK_DIR/boot/extracted
 echo -e "\e[1m\e[32mExtracting ramdisk\e[39m"
 gunzip -c $WORK_DIR/boot/boot.img-ramdisk.gz | cpio -i
 #echo -e "\e[1m\e[32mPatching init.rc\e[39m"
-#cp -v $PATCHROM/nibiru_patches/msmhotplug.patch msmhotplug.patch
-#patch -p1 < msmhotplug.patch
-cp -v $PATCHROM/nibiru_patches/boot/libshims.patch libshims.patch
+cp -v $PATCHROM/nibiru_patches/boot/*.patch ../extracted
 patch -p1 < libshims.patch
+patch -p1 < goodix.patch
+rm *.patch
+find . -name "*.orig" -type f -delete
 echo -e "\e[1m\e[32mReplacing and patching files\e[39m"
 cp -vf $PREBUILT/boot/fstab.qcom $WORK_DIR/boot/extracted/fstab.qcom
 echo -e "\e[1m\e[32mPacking ramdisk\e[39m"
